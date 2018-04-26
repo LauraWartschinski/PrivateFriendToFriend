@@ -63,6 +63,10 @@ It's upsides are definitely the deniability features. Nobody knows if the person
 
 The unique structure and the implementation details that came with the double overlay structure are the main points of interest. It is possible to transmit (text) files with the programm, but it is not exactly comfortable.
 
-
+![example of three connected peers](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/threesome.png)
+In this example, all peers are connected on the Connection Overlay. Bob is friends with Claire, and Emily is friends with Claire (you can see the requests for friendship in Claires logs). All peers have two announcements, from both other peers, even though they are only friends with one other peer, since the other announcement is forwarded through the network.
 
 ## How to install ##
+
+
+![example of setup](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/setup.png)
