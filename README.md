@@ -29,7 +29,7 @@ user only directly interacts with friends.
 ### Details ###
 
 
-#### Bootstrapping / the connection overlay ####
+#### Bootstrapping / The Connection Overlay ####
 In the connection overlay, every peer can establish a connecction to every other peer who is online and uses the system.
 
 To start using the system, at least **one other peer has to be found** via the connection overlay. To find a peer to connect to,
@@ -39,11 +39,11 @@ a website where everyone can look them up. This should not be mandatory, as the 
 is definitely using the service to non-users.)
 
 After connecting with one peer, information about neighbours are transmitted through the system, so that neighbours of neighbours of neighbours (etc.)
-can be found and a Connection Overlay connection can be established. Right now, peers discover to everyone they discover that way. In a  real life implementation,
-it would be neccessary to have some kind of limit.
-
+can be found and a Connection Overlay connection can be established. Right now, peers discover to everyone they discover that way. In a  real life implementation, it would be neccessary to have some kind of limit.
 
 ![example of bootstrapping](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/bootstrap.png)
 
-Friends are user that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard).
-Friends exchange files with each other and tell friends which files they can provide.
+#### the Friend Overlay ####
+
+Friends are users that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard). Friends exchange files with each other and tell friends which files they can provide.
+
