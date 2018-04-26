@@ -41,6 +41,7 @@ can be found and a Connection Overlay connection can be established. Right now, 
 it would be neccessary to have some kind of limit.
 
 
+![example of bootstrapping](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/bootstrap.png)
 
 Friends are user that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard).
 Friends exchange files with each other and tell friends which files they can provide.
