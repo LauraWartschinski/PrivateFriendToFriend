@@ -153,17 +153,32 @@ public class MainProgram {
 	            scanner.next();
 	        }
 			
-			if (input <= (ipList.size()/2)){
+			if (input <= (ipList.size()-ipList.size()/2)){
 				running = false;
 			} else {
 				System.out.println("Invalid Input. Please choose a number.");
 			}
 		}
+    
+    
+	    String ip = "";
+		int counter = 0;
+		Enumeration<NetworkInterface> networks = NetworkInterface.getNetworkInterfaces();
+		for (;networks.hasMoreElements() && counter < input;) {
+		  counter++;
+		  NetworkInterface networkInt = networks.nextElement();
+		  if (input == counter) {
+			  Enumeration<InetAddress> addr = networkInt.getInetAddresses();
+			  ip = addr.nextElement().getHostAddress();
+		      if (ip.contains(":") && addr.hasMoreElements()) {        
+		    	  ip = addr.nextElement().getHostAddress();
+		      }
+		  }
+		}
 
-		String ip=ipList.get((input*2)-1);
 		//initialize connection overlay
-        ConnectionInterface connectionOverlay = new ConnectionInterface(key, pub, connectionOverlayQueue, serverport, ip);
-        connectionOverlay.setHome(home);
+    ConnectionInterface connectionOverlay = new ConnectionInterface(key, pub, connectionOverlayQueue, serverport, ip);
+    connectionOverlay.setHome(home);
 		//initialize Gui, comment out this line if Commandline interaction is preferred
 
 		/*MainFrame m =new MainFrame(connectionOverlay, friendOverlay, pub, key, home, ip);
