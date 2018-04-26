@@ -24,6 +24,8 @@ user only directly interacts with friends.
 
 ![overlay structure](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/overlays.png)
 
+*How the network would like like if Bob and Emily, and Bob and Alice were friends, and there was no direct connectivity between Bob and Alice (maybe because of they are to far away from each other)*
+
 ### Details ###
 
 
