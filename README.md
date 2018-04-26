@@ -43,7 +43,26 @@ can be found and a Connection Overlay connection can be established. Right now, 
 
 ![example of bootstrapping](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/bootstrap.png)
 
-#### the Friend Overlay ####
+#### The Friend Overlay / Filesharing ####
 
-Friends are users that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard). Friends exchange files with each other and tell friends which files they can provide.
+Friends are users that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard). Friends exchange files with each other and tell friends which files they can provide. 
 
+In the local folder reserved for the user, all files are stored. Every file that is located there is advertised by name to all friends, who in turn advertise the file to their friends. If a announcement is received, the receiver stores the filename and the connection details of the announcer. If the same file (for simplicity: a file with the same name) is advertised by somebody else, this is ignored. Therefore, the knowledge about the file spreads through the network like a tree with the root at the origin peer.
+
+(In a real life implementation for actual use, it would be useful to use a soft state protocol that updates the messages in regular intervals and assumes that files are not longer available if the last update is after a certain timeout. This might be tricky, since updates from friends might refresh the file again, so cycles have to be avoided.)
+
+A user can send a request for a file to a friend who announced that file to them. The files will be transmitted directly, or if the friend doesn't store the file locally, the friend will first request the file from whoever announced it to *them*, and so forth, until the file is transmitted to the final recipient.
+
+In our implementation, files are stored in the same folder as the files that are announced to the network, so they spread through the network.
+
+#### Conclusion ####
+
+The network is, obviously, not exactly fast and efficient. In the worst case, a long chain of n friends with no interconnections (Alice-Bob-Claire-Emily), a transmission from Alice to Emily would require n transmissions of announcements, n requests, and n times a file to be delivered over the whole network. The routing complexity is in O(n), which is considerably worse than lots of other, more sensible filesharing systems, e.g. those with a DHT. Every Peer only *needs* to have one friend to be able to receive files, but it is not given that every file will be available in such case. It is possible if the whole friend overlay is a connected graph, which doesn't need to be the case, since it is up to the user who they consider to be a friend. To sum it up, this P2P network is very inefficient.
+
+It's upsides are definitely the deniability features. Nobody knows if the person asking for a file wants it for themselves, or to transmit it somebody else. The same goes for file announcements. Everybody is only ever exchanging files with their direct friends. Maybe there could be some kind of application of such a system in the real world.
+
+The unique structure and the implementation details that came with the double overlay structure are the main points of interest. It is possible to transmit (text) files with the programm, but it is not exactly comfortable.
+
+
+
+## How to install ##
