@@ -24,7 +24,9 @@ user only directly interacts with friends.
 
 ![overlay structure](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/overlays.png)
 
-*How the network would like like if Bob and Emily, and Bob and Alice were friends, and there was no direct connectivity between Bob and Alice (maybe because of they are to far away from each other)*
+*How the network would like like if Bob and Emily, and Bob and Alice were friends)*
+
+
 
 ### Details ###
 
@@ -38,10 +40,14 @@ Also, there could be an option for a peer to volunteer as a publicly discoverabl
 a website where everyone can look them up. This should not be mandatory, as the peer would disclose that this ip
 is definitely using the service to non-users.)
 
-After connecting with one peer, information about neighbours are transmitted through the system, so that neighbours of neighbours of neighbours (etc.)
+After connecting with one peer, information about neighbours are flooded through the system, so that neighbours of neighbours of neighbours (etc.)
 can be found and a Connection Overlay connection can be established. Right now, peers discover to everyone they discover that way. In a  real life implementation, it would be neccessary to have some kind of limit.
 
 ![example of bootstrapping](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/bootstrap.png)
+
+![Connection Overlay structure](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/ConnectionOverlay.png)
+yellow: the peers at the left both connect to the peer at the right, using their IP and port combo, for bootstrapping
+blue: the flooding allowes peers to discover each other, even though they didn't know their addresses before
 
 #### The Friend Overlay / Filesharing ####
 
@@ -54,6 +60,9 @@ Friends are users that trust each other. The friend connection is symmetrical. F
 Friends exchange files with each other and tell friends which files they can provide. 
 
 In the local folder reserved for the user, all files are stored. Every file that is located there is advertised by name to all friends, who in turn advertise the file to their friends. If a announcement is received, the receiver stores the filename and the connection details of the announcer. If the same file (for simplicity: a file with the same name) is advertised by somebody else, this is ignored. Therefore, the knowledge about the file spreads through the network like a tree with the root at the origin peer.
+
+
+![example of file transmission](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/transmit.png)
 
 (In a real life implementation for actual use, it would be useful to use a soft state protocol that updates the messages in regular intervals and assumes that files are not longer available if the last update is after a certain timeout. This might be tricky, since updates from friends might refresh the file again, so cycles have to be avoided.)
 
@@ -75,7 +84,24 @@ It's upsides are definitely the deniability features. Nobody knows if the person
 The unique structure and the implementation details that came with the double overlay structure are the main points of interest. It is possible to transmit (text) files with the programm, but it is not exactly comfortable.
 
 
-## How to install ##
+## How to install and start ##
 
+
+
+`git clone https://github.com/LauraWartschinski/PrivateFriendToFriend`
+
+`cd PrivateFriendToFriend`
+
+`javac -cp "/home/[username]/PrivateFriendToFriend/" project_main_src/MainProgram.java`
+
+`java project_main_src.MainProgram`
+
+1. Start the program (at least two times)
+2. Pick user IDs (not the same)
+3. Pick an interface to connect over
+4. Use one peer's IP and Port (displayed on the screen) to connect the other(s) to it. Connect every peer with at least one other peer (not neccessarily the same one).
+5. Send friendship requests
+6. Wait for file announcements
+7. Request files
 
 ![example of setup](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/setup.png)
