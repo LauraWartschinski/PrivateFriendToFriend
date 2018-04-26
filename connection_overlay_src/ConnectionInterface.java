@@ -181,9 +181,6 @@ public class ConnectionInterface{
 		} catch (UnknownHostException e) {
 			System.out.println("Connection Overlay: Couldn't find the specified host.\n");
 			//e.printStackTrace();
-		} catch (IOException e) {
-			//System.out.println("Invalid Input.\n");
-			e.printStackTrace();
 		} catch(java.util.InputMismatchException e) {
 			System.out.println("Connection Overlay: Invalid Input.\n");
 			scanner.next();

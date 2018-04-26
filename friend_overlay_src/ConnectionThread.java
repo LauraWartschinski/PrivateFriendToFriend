@@ -143,7 +143,7 @@ public class ConnectionThread implements Runnable  {
                 }
                 
                 if (msg.startsWith("transmit")) {
-                	System.out.println("Got transmit: " + msg);
+                	System.out.println("Got transmit: \n" + msg);
                 	pc.receiveTransmit(msg);
                 }
                 

@@ -117,7 +117,7 @@ public class MainProgram {
 		//initialize Queue for communication between the two overlays
 		BlockingQueue<String> connectionOverlayQueue = new LinkedBlockingQueue<String>();
 
-        //Start friend overlay
+    //Start friend overlay
 
 		//port for server is set to 0, so that the system selects a free port itself
 		int serverport=0;

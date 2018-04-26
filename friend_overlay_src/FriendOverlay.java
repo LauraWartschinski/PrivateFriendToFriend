@@ -70,8 +70,9 @@ public class FriendOverlay {
 
 			System.out.println("What is the name of the file you want to request?");
 			for (String file : files) {
-				System.out.println(file);
+				System.out.print("\""+file+"\" ");
 			}
+			System.out.println();
 			String filename = scanner.nextLine();
 			//System.out.println("Requesting: " + filename);
 			
