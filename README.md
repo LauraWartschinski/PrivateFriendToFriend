@@ -47,6 +47,10 @@ can be found and a Connection Overlay connection can be established. Right now, 
 
 Friends are users that trust each other. The friend connection is symmetrical. Friends have to exchange their public keys over a secure channel of communication that is not provided by this network (but also not very hard). Then, they can send a friend request through the network. It is sent over the Connection Overlay and flooded through the whole network. The payload is a message that is encrypted with the public key of the intented receiver, so only the receiver can decrypt it. Inside the message are the port and ip and public key of the sender who started the friend request. The receiver will check if the friend is in their list of trusted peers (by comparing their public key to their database of potential friends), and if that succeeds, they will send a message directly to the ip/port specified in the message. This includes *their* IP, port and public key. This will result in a direct acknowledgement from the friend, and afterwards, both consider each other connected as friends.
 
+
+![example of three connected peers](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/friendrequest.png)
+
+
 Friends exchange files with each other and tell friends which files they can provide. 
 
 In the local folder reserved for the user, all files are stored. Every file that is located there is advertised by name to all friends, who in turn advertise the file to their friends. If a announcement is received, the receiver stores the filename and the connection details of the announcer. If the same file (for simplicity: a file with the same name) is advertised by somebody else, this is ignored. Therefore, the knowledge about the file spreads through the network like a tree with the root at the origin peer.
@@ -60,6 +64,8 @@ In our implementation, files are stored in the same folder as the files that are
 
 ![example of three connected peers](https://github.com/LauraWartschinski/PrivateFriendToFriend/blob/master/doku/threesome.png)
 
+In this example, all peers are connected on the Connection Overlay. Bob is friends with Claire, and Emily is friends with Claire (you can see the requests for friendship in Claires logs). All peers have two announcements, from both other peers, even though they are only friends with one other peer, since the other announcement is forwarded through the network.
+
 #### Conclusion ####
 
 The network is, obviously, not exactly fast and efficient. In the worst case, a long chain of n friends with no interconnections (Alice-Bob-Claire-Emily), a transmission from Alice to Emily would require n transmissions of announcements, n requests, and n times a file to be delivered over the whole network. The routing complexity is in O(n), which is considerably worse than lots of other, more sensible filesharing systems, e.g. those with a DHT. Every Peer only *needs* to have one friend to be able to receive files, but it is not given that every file will be available in such case. It is possible if the whole friend overlay is a connected graph, which doesn't need to be the case, since it is up to the user who they consider to be a friend. To sum it up, this P2P network is very inefficient.
@@ -68,7 +74,6 @@ It's upsides are definitely the deniability features. Nobody knows if the person
 
 The unique structure and the implementation details that came with the double overlay structure are the main points of interest. It is possible to transmit (text) files with the programm, but it is not exactly comfortable.
 
-In this example, all peers are connected on the Connection Overlay. Bob is friends with Claire, and Emily is friends with Claire (you can see the requests for friendship in Claires logs). All peers have two announcements, from both other peers, even though they are only friends with one other peer, since the other announcement is forwarded through the network.
 
 ## How to install ##
 
