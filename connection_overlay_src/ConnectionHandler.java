@@ -18,9 +18,6 @@ import friend_overlay_src.Keys;
  * time out timer. 
  * Together with the keep alive messages, the peer exchanges lists of known peer
  * connections/listeners.
- * The ConnectionHandler shuts down, if the ConnectionInterface and with it, 
- * the whole overlay wants to shut down. Or when specifically called out by
- * the ConnectionWatcher as a double connection to a peer.
  *
  */
 public class ConnectionHandler implements Runnable{

@@ -7,8 +7,8 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * This Class is creates a Thread for connecting with a single peer. It can only be a sender or a receiver. There are two of
- * these Threads per peer (one as sender, one as receiver) .
+ * Creates a Thread for connecting with a single peer. It can only be a sender or a receiver. There are two of
+ * these Threads per peer (one as sender, one as receiver).
  * Both threads belong to a PeerConnection.
  */
 public class ConnectionThread implements Runnable  {
@@ -23,12 +23,12 @@ public class ConnectionThread implements Runnable  {
     Keys k;
 
     /**
-     * Sets function of Connection Thread. If True, this instance acts a sender, else as reciever thread.
+     * Sets function of Connection Thread. If true, this instance acts a sender, otherwise as receiver thread.
      */
     public boolean sending;
 
     /**
-     * Constructor of Connection Thread. Has to be initalized with a Socket, a function (Sending or not sending) and a PeerConnection object
+     * Constructor of Connection Thread. Has to be initalized with a socket, a function (Sending or not sending) and a PeerConnection object
      * which stores information about the connection with the associated peer.
      * @param s
      * @param funktion
@@ -43,7 +43,7 @@ public class ConnectionThread implements Runnable  {
     }
 
     /**
-     * Creates a Printstream for writing on the socket and sending messages to the peer.
+     * Creates a printstream for writing on the socket and sending messages to the peer.
      */
     public void createOutputStream(){
         try {
@@ -77,7 +77,7 @@ public class ConnectionThread implements Runnable  {
 
     /**
      * This method is called if sending is set to true (so if the connection thread is a sender).
-     * Every 10 to 50 seconds it sends encrypted Alive messages to keep the connection open.
+     * Every 10 to 50 seconds it sends encrypted alive messages to keep the connection open.
      * The messages are encrypted with a session key (of class 'SecretKey').
      * If an exception arises, all connections to this peer are closed.
      */
@@ -155,7 +155,6 @@ public class ConnectionThread implements Runnable  {
                 
             }
 
-            //Schliest verbindung zu Peer wenn keine NAchrichten kamen für x sekunden
             Timestamp now=new Timestamp(System.currentTimeMillis());
             long diff=now.getTime() - last_alive_msg.getTime();
             if( diff > 50) {

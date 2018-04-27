@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * This class receives connection requests from other peers over the friend overlay.
+ * This class receives connection requests from other peers over the Friend Overlay.
  * If verifies the identity of a peer before accepting a connection and establishes a session key with the peer.
  * This class is a thread.
  */
@@ -50,7 +50,7 @@ public class Server implements Runnable {
     /**
      * This method listens on port of the ServerSocket for new connection requests.
      * If a connection is received, the server will verify if the sender is in the list of friends.
-     * If that is the case, it will create a new PeerConnection for this peer and start its' Threads.
+     * If that is the case, it will create a new PeerConnection for this peer and start it's threads.
      * It will then notify the OrganizerThread about this new PeerConnection.
      * @return true if received connection was verifyed and a PeerConnection was started.
      */
@@ -96,8 +96,6 @@ public class Server implements Runnable {
     public Friend verifyPeer( Socket socket, PrivateKey key  ){
 
         try {
-
-            //BUffered reader und inputstreamreader für String, Inputstream für byteströme
             InputStream is= socket.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String newline=br.readLine();
@@ -105,15 +103,12 @@ public class Server implements Runnable {
             String decrypted=k.decrypt(newline, key);
             Friend f=whoIsThisPeer(decrypted);
 
-            //die hier auskommentierten teile einkommentieren falls auf einem größeren Netzwerk
-            //das initiale aushandeln fehlschlägt
             if(f!=null) {
 
                 PrintStream output = new PrintStream(socket.getOutputStream());
                 //Timestamp now = new Timestamp(System.currentTimeMillis());
                 //Timestamp earlier = new Timestamp(System.currentTimeMillis());
 
-                //Session keys austauschen
                 SecretKey skey= k.generateSymmetricKey();
                 PublicKey publickey=f.getPublickey();
                 String skey_string=k.keytoString(skey);
@@ -125,7 +120,6 @@ public class Server implements Runnable {
                   //  now = new Timestamp(System.currentTimeMillis());
 
                 //}
-                //Auf keinen Fall die Streams schließen, weil das die Socket schließt!!
 
                 return f;
 
@@ -171,7 +165,7 @@ public class Server implements Runnable {
     }
 
     /**
-     * Constantly running method of Server.
+     * Constantly running method of server.
      * On start it will create ad distinct and recognizable name for the thread.
      * While not interrupted, the method will check for new connections.
      * If a connection request failed, it will wait for 1000 ms before listening again.

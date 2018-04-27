@@ -348,7 +348,7 @@ public class ConnectionInterface{
 	}
 	
 	/**
-	 * Returns if the Interface wants to shut down.
+	 * Returns if the interface wants to shut down.
 	 * @return boolean which tells the caller if the Interface wants to shut down the overlay
 	 */
 	public boolean getRunning(){
@@ -357,7 +357,7 @@ public class ConnectionInterface{
 	
 	/**
 	 * Returns address of own listener ("Port-IP").
-	 * @return address String as "Port-IP"
+	 * @return address string as "Port-IP"
 	 */
 	public String getOwnListener(){
 		return this.ownListenerStr;
@@ -382,7 +382,7 @@ public class ConnectionInterface{
 	
 	/**
 	 * Gets only the IP of own listener.
-	 * @return listener IP as String
+	 * @return listener IP as string
 	 */
 	public String getListenerIp(){
 		return this.listenerIp;
@@ -390,7 +390,7 @@ public class ConnectionInterface{
 
 	/**
 	 * Gets only the port of own listener.
-	 * @return listener port as String
+	 * @return listener port as string
 	 */
 	public String getListenerPort(){
 		return  this.listenerPort;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class enables reading and writing Friend objects from and to file.
+ * This class enables reading and writing friend objects from and to a file.
  */
 public class Parser {
     private List<Friend> friends=null;
@@ -17,9 +17,9 @@ public class Parser {
 
 
     /**
-     * Reads all Friends from friends.csv which is stored under csv_loc.
+     * Reads all friends from friends.csv which is stored under csv_loc.
      * Creates a new friends.csv file if no file was found at csv_loc.
-     * @return List of Friend objects
+     * @return List of friend objects
      */
     public List<Friend> getFriendsFromFile() {
         BufferedReader bufferedReader = null;
@@ -91,7 +91,7 @@ public class Parser {
     }
 
     /**
-     * Appends new Friend object to friends.csv.
+     * Appends new friend object to friends.csv.
      * @param id
      * @param ip
      * @param port
@@ -112,7 +112,7 @@ public class Parser {
     }
 
     /**
-     * Creates a String from all Friendobjects in List f.
+     * Creates a String from all friend objects in list f.
      * @param f
      * @return String
      */
@@ -130,7 +130,7 @@ public class Parser {
 
 
     /**
-     * Changes Location of friends.csv file to the subfolder home in src/project_main_src
+     * Changes location of friends.csv file to the subfolder home in src/project_main_src
      * @param home
      */
     public void setCSVLocation(String home ){

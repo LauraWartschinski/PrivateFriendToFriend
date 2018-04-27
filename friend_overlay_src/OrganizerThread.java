@@ -16,7 +16,7 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * This class administers all connections of the friend overlay.  It knows about all open connections,
- * all Friends and files available for the client on the network.
+ * all friends and files available for the client on the network.
  * It also can receive information from the Connection Overlay instance running on the client.
  * This class is a thread.
  */
@@ -228,18 +228,14 @@ public class OrganizerThread implements Runnable {
 
 		establish_Connections_On_StartUp();
 
-		// öffnet einen Server Thread, der Verbindungen auf server_port entgegen nimmt (standart: 0, also wählt port frei)
 		server = new Server(server_port, this);
 		server.createServerSocket();
 
-		//jetzt ist port fest
 		server_port=server.getPort();
 
 		s_thread = new Thread(server);
 		s_thread.start();
 		int last = 0;
-		// read from all the input pipes after each other in a big loop
-		// TODO check for starvation issues
 		while (!Thread.currentThread().isInterrupted()) {
 			int ms = (int) new Date().getTime();
 			//if (ms > last) {

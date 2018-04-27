@@ -62,7 +62,7 @@ public class FriendOverlay {
 
 
 	/**
-	 * Lets user request a file from the available ones and calls the method request in the OrgenizerThread.
+	 * Lets user request a file from the available ones and calls the method request in the OrganizerThread.
 	 */
 	public void requestFile() {
 		Vector<String> files = orga.getFiles();
@@ -144,8 +144,8 @@ public class FriendOverlay {
 	//Schreibt Freund in CSV Datei und hängt ihn an die momentan verwendete Contacs Listen in Orga und FriendOverlay an.
 
 	/**
-	 * Adds new Friend into the system by writing the information to the CSV file (  by calling addFriendtoCSV in Parser).
-	 * It also adds the new Friend to contacts in FriendOverlay and in OrganizerThread.
+	 * Adds new Friend into the system by writing the information to the CSV file (by calling addFriendtoCSV in Parser).
+	 * Also adds the new Friend to contacts in FriendOverlay and in OrganizerThread.
 	 * @param id
 	 * @param ip
 	 * @param port

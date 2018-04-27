@@ -21,7 +21,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * Main class that calls all other classes needed to create COnnection Overlay
+ * Main class that calls all other classes needed to create Connection Overlay
  * and Friend Overlay. 
  *
  */
@@ -32,7 +32,6 @@ public class MainProgram {
 	 * Allows user to take one of 3 already existing identities.
 	 * Sets home directory for this client in src/project_main_src.
 	 * Reads keys from file or initializes new ones.
-	 * Allows user to interact with program via commandline or GUI.
 	 * Takes user input in main loop.
 	 * @param args command line arguments
 	 * @throws IOException
@@ -179,10 +178,6 @@ public class MainProgram {
 		//initialize connection overlay
     ConnectionInterface connectionOverlay = new ConnectionInterface(key, pub, connectionOverlayQueue, serverport, ip);
     connectionOverlay.setHome(home);
-		//initialize Gui, comment out this line if Commandline interaction is preferred
-
-		/*MainFrame m =new MainFrame(connectionOverlay, friendOverlay, pub, key, home, ip);
-		m.interactionAndUpdate();*/
 
 		//For reading input from the user
         running = true;

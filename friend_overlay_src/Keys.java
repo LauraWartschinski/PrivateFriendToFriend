@@ -230,7 +230,7 @@ public class Keys {
     }
 
     /**
-     * Translates a Key (any Key) to a Base64 encoded String.
+     * Translates a key (any key) to a Base64 encoded string.
      * @param key
      * @return String of Key key
      */
@@ -248,9 +248,9 @@ public class Keys {
     }
 
     /**
-     * Translates a String s into a PublicKey object.
+     * Translates a string s into a PublicKey object.
      * @param s
-     * @return Public key for String s
+     * @return Public key for string s
      */
     public PublicKey StringToPublicKey(String s) {
 
@@ -276,7 +276,7 @@ public class Keys {
     }
 
     /**
-     * Translates String s into a session key of class SecretKey.
+     * Translates string s into a session key of class SecretKey.
      * @param s
      * @return Secretkey from string
      */

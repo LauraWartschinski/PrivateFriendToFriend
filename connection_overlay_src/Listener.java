@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
- * The Listener class watches a specified port and waits for other peers to connect
+ * The listener class watches a specified port and waits for other peers to connect
  * over this port. If an connection is established, the listener gives the socket to 
- * a new ConnectionHandler, by calling a ConnectionInterface function.
- * The Listener gets his own port, but needs to known on which connected network 
+ * a new connectionHandler, by calling a connectionInterface function.
+ * The listener gets his own port, but needs to known on which connected network 
  * it should operate, by giving it the IP which the computer has in that network.
  *
  */
